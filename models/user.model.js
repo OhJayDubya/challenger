@@ -3,6 +3,14 @@ const validator = require('validator');
 const mongoErrors = require('mongoose-mongodb-errors');
 
 const userSchema = new mongoose.Schema({
+  challenges: [{
+    challenge: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Challenge',
+      status: String,
+      time: Date,
+    },
+  }],
   email: {
     type: String,
     unique: true,
