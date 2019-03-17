@@ -22,6 +22,9 @@ mongoose.connection.on('error', (err) => {
   console.error(`MongoDB connection error: ${err.message}`);
 });
 
+// Declare Models
+require('./models/index');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
