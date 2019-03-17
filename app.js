@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -7,7 +8,19 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+require('dotenv').config({ path: 'variables.env' });
+
 const app = express();
+
+// Setup Mongoose Database Connection
+mongoose.connect(process.env.DATABASE, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+});
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => {
+  console.error(`MongoDB connection error: ${err.message}`);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
