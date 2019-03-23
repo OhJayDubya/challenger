@@ -25,10 +25,6 @@ async function deleteData() {
 
 async function loadData() {
   try {
-    console.log('♻️ Clearing database for seed');
-
-    deleteData();
-
     console.log('🌱 Seeding data into database');
 
     await User.insertMany(users);
