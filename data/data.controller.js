@@ -25,7 +25,7 @@ async function deleteData() {
 
 async function loadData() {
   try {
-    console.log('♻️ Clearing database for seed')
+    console.log('♻️ Clearing database for seed');
 
     deleteData();
 
