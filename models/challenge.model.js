@@ -10,7 +10,7 @@ const challengeSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  descrpition: {
+  description: {
     type: String,
     required: 'You must supply a description',
   },
