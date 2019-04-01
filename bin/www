@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+require('../models/index');
+
 const debug = require('debug')('challenger:server');
 const http = require('http');
 const app = require('../app');
