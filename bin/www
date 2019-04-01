@@ -4,11 +4,7 @@
  * Module dependencies.
  */
 
-
-require('../models/challenge.model');
-require('../models/review.model');
-require('../models/user.model');
-
+require('../models/index');
 
 const debug = require('debug')('challenger:server');
 const http = require('http');
