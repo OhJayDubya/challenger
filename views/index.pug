@@ -1,4 +1,12 @@
 extends layout
 
 block content
-    p This is default
+    .mdl-layout__content
+        .home.mdl-typography--text-center
+            .home-title are you challenged?
+            .home-subtitle welcome to challenger...make everyday a winning day.
+            .home-action
+                a(href="/login")
+                    button.home-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored Login
+                a(href="/register")
+                    button.home-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent Register

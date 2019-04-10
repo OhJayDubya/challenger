@@ -1,0 +1,15 @@
+.form-input {
+  display: block !important;
+  width: 100% !important;
+}
+
+.form-action {
+  display: block !important;
+  width: 100% !important;
+}
+
+.form-link {
+  display: block;
+  margin-top: 50px;
+  text-align: center;
+}
