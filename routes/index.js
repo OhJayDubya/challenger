@@ -15,4 +15,9 @@ router.get('/register', userController.registerForm);
 
 router.get('/forgot', userController.forgotForm);
 
+router.get('/flash', (req, res) => {
+  req.flash('info', 'Flash Test!');
+  res.redirect('/');
+});
+
 module.exports = router;

@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const logger = require('morgan');
 const globals = require('./public/javascripts/globals');
 
@@ -35,8 +38,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+}));
+
+app.use(flash());
+
 app.use((req, res, next) => {
   res.locals.g = globals;
+  res.locals.flashes = req.flash();
   next();
 });
 

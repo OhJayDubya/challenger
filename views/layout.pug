@@ -26,6 +26,15 @@ html
                 li.mdl-menu__item Logout
       
       block content
+
+      block messages
+        if locals.flashes
+          - const categories = Object.keys(locals.flashes)
+          each category in categories
+            each message in flashes[category]
+              .mdl-snackbar
+                p.mdl-snackbar__text!= message
+
             
     block scripts
       script(defer src="https://code.getmdl.io/1.3.0/material.min.js")
