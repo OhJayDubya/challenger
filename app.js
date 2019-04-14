@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const express = require('express');
 const session = require('express-session');
+const expressValidator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -35,9 +36,11 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Keeps users logged in and allows sending of flash messages
 app.use(session({
   secret: process.env.SECRET,
   key: process.env.KEY,
@@ -46,6 +49,7 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
+// Flashes used to display error messages in the system
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -54,6 +58,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Routes used in the application
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/challenges', challengesRouter);
