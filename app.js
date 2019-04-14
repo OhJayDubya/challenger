@@ -8,6 +8,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const logger = require('morgan');
+const passport = require('passport');
 const globals = require('./public/javascripts/globals');
 
 const indexRouter = require('./routes/index');
@@ -16,6 +17,7 @@ const challengesRouter = require('./routes/challenges');
 const reviewsRouter = require('./routes/reviews');
 
 require('dotenv').config({ path: 'variables.env' });
+require('./public/javascripts/passport');
 
 const app = express();
 
@@ -49,12 +51,17 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
+// Used to handle logins for the system
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Flashes used to display error messages in the system
 app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.g = globals;
   res.locals.flashes = req.flash();
+  res.locals.user = req.user || null;
   next();
 });
 
