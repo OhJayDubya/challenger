@@ -30,7 +30,8 @@ exports.registerValidate = (req, res, next) => {
 
   const errors = req.validationErrors();
   if (errors) {
-    console.log('THESE ARE THE ERRORS', errors);
+    req.flash('error', errors.map(err => err.msg));
+    res.render('register', { title: 'Register', body: req.body, flashes: req.flash() });
     return;
   }
 
