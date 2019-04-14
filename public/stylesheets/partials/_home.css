@@ -1,0 +1,40 @@
+.home {
+  position: relative;
+  width: auto;
+}
+
+.home-title {
+  font-size: 60px;
+  padding-top: 160px;
+}
+
+.home-subtitle {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.home-action {
+  font-size: 21px;
+  padding-top: 100px;
+}
+
+.home-button {
+  height: 50px !important;
+  width: 200px;
+  margin: 5px !important;
+}
+
+@media (max-width: 900px) {
+  .home-title {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+    line-height: normal;
+  }
+  
+  .home-subtitle {
+    font-size: 16px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+}

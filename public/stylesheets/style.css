@@ -1,8 +1,5 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+@import 'partials/_layout.css';
+@import 'partials/_home.css';
+@import 'partials/_card.css';
+@import 'partials/_form.css';
+@import 'partials/_flashes.css';
