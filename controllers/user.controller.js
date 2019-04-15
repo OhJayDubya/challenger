@@ -2,17 +2,20 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
 
-exports.getUsers = async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-};
-
 exports.loginForm = (req, res) => {
   res.render('login', { title: 'Login' });
 };
 
 exports.registerForm = (req, res) => {
   res.render('register', { title: 'Register' });
+};
+
+exports.forgotForm = (req, res) => {
+  res.render('forgot', { title: 'Forgot' });
+};
+
+exports.settings = (req, res) => {
+  res.render('settings', { title: 'Settings' });
 };
 
 exports.registerValidate = (req, res, next) => {
@@ -44,6 +47,18 @@ exports.registerAccount = async (req, res, next) => {
   next();
 };
 
-exports.forgotForm = (req, res) => {
-  res.render('forgot', { title: 'Forgot' });
+exports.editAccount = async (req, res) => {
+  const edits = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  await User.findOneAndUpdate(
+    { _id: req.user.id },
+    { $set: edits },
+    { new: true, runValidators: true, context: 'query' },
+  );
+
+  req.flash('success', 'Account details have been updated');
+  res.redirect('back');
 };

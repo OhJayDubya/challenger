@@ -5,7 +5,9 @@ const userController = require('../controllers/user.controller');
 const authController = require('../controllers/auth.controller');
 
 /* GET Requests */
-router.get('/', userController.getUsers);
+router.get('/settings', authController.authCheck, userController.settings);
+
+/* POST Requests */
 
 router.post('/register',
   userController.registerValidate,
@@ -14,5 +16,7 @@ router.post('/register',
 
 router.post('/login',
   authController.login);
+
+router.post('/settings', userController.editAccount);
 
 module.exports = router;
