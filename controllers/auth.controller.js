@@ -18,6 +18,6 @@ exports.authCheck = (req, res, next) => {
     next();
     return;
   }
-  req.flash('error', 'Please login to you account');
+  req.flash('error', 'Please login to your account');
   res.redirect('/login');
 };
