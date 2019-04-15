@@ -23,7 +23,7 @@ html
                   i.material-icons more_vert
                 ul.mdl-menu.mdl-js-menu.mdl-menu--bottom-right.mdl-js-ripple-effect(for='more-button')
                   li.mdl-menu__item Challenges
-                  li.mdl-menu__item Settings
+                  li.mdl-menu__item: a(href='/users/settings') Settings
                   li.mdl-menu__item: a(href='/logout') Logout
 
       block messages
@@ -33,7 +33,7 @@ html
           each message in flashes[category]
             .flash(class=`flash--${category}`)
               p.flash__text!= message
-              button.flash__action(class=`flash--${category}`)(onClick="this.parentElement.remove()") Close
+              button.flash__action(class=`flash--${category}` onClick="this.parentElement.remove()") Close
       
       block content
             
