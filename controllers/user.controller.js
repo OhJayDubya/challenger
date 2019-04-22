@@ -43,8 +43,13 @@ exports.registerValidate = (req, res, next) => {
 
 exports.registerAccount = async (req, res, next) => {
   const user = new User({ email: req.body.email, name: req.body.name });
-  await User.register(user, req.body.password);
-  next();
+  try {
+    await User.register(user, req.body.password);
+    next();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 exports.editAccount = async (req, res) => {
