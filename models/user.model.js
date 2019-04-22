@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const mongoErrors = require('mongoose-mongodb-errors');
+const passportLocal = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
   challenges: [{
@@ -28,6 +29,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.plugin(passportLocal, { usernameField: 'email' });
 userSchema.plugin(mongoErrors);
 
 module.exports = mongoose.model('User', userSchema);
