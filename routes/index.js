@@ -18,4 +18,6 @@ router.get('/register', userController.registerForm);
 
 router.get('/forgot', userController.forgotForm);
 
+router.get('/reset/:token', authController.resetPassword);
+
 module.exports = router;
