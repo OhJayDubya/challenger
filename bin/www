@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('dotenv').config({ path: 'variables.env' });
 require('../models/index');
 
 const debug = require('debug')('challenger:server');
