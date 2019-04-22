@@ -9,15 +9,14 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const logger = require('morgan');
 const passport = require('passport');
-const globals = require('./public/javascripts/globals');
+const globals = require('./util/globals');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const challengesRouter = require('./routes/challenges');
 const reviewsRouter = require('./routes/reviews');
 
-require('dotenv').config({ path: 'variables.env' });
-require('./public/javascripts/passport');
+require('./util/passport');
 
 const app = express();
 
