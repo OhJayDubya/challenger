@@ -17,6 +17,10 @@ router.post('/register',
 router.post('/login',
   authController.login);
 
-router.post('/settings', userController.editAccount);
+router.post('/forgot', authController.forgotPassword);
+
+router.post('/reset');
+
+router.post('/settings', authController.authCheck, userController.editAccount);
 
 module.exports = router;
