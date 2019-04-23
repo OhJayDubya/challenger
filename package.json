@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "prod": "node ./bin/www",
     "dev": "nodemon ./bin/www",
+    "start": "concurrently \"npm run dev\" \"npm run scripts\" \"npm run styles\"",
+    "scripts": "parcel ./public/javascripts/challenger.js -d public/dist",
+    "styles": "parcel ./public/stylesheets/style.css -d public/dist",
     "seed": "node ./data/data.controller.js",
     "purge": "node ./data/data.controller.js --delete"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",
@@ -31,9 +35,11 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "parcel": "^1.12.3"
   }
 }
