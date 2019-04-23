@@ -57,5 +57,11 @@ typings/
 # dotenv environment variables file
 *.env
 
+# cache files from Parcel
+*.cache
+
+# dist folder from Parcel
+public/dist
+
 # next.js build output
 .next
