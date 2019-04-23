@@ -16,8 +16,6 @@ const generateTemplate = (filename, options = {}) => {
   const template = pug.renderFile(`${__dirname}/../views/emails/${filename}.pug`, options);
   const result = juice(template);
 
-  console.log(result);
-
   return result;
 };
 
@@ -31,8 +29,6 @@ exports.sendMail = async (options) => {
     html: template,
     text,
   };
-
-  console.log('🚨', info);
 
   await transporter.sendMail(info).catch((err) => { console.log(err); });
 };
