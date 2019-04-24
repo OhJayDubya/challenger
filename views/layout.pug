@@ -23,8 +23,8 @@ html
                   i.material-icons more_vert
                 ul.mdl-menu.mdl-js-menu.mdl-menu--bottom-right.mdl-js-ripple-effect(for='more-button')
                   li.mdl-menu__item Challenges
-                  li.mdl-menu__item: a(href='/users/settings') Settings
-                  li.mdl-menu__item: a(href='/logout') Logout
+                  a(href='/users/settings'): li.mdl-menu__item Settings
+                  a(href='/logout'): li.mdl-menu__item Logout
 
       block messages
       if locals.flashes
