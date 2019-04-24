@@ -1,9 +1,12 @@
 import axios from 'axios';
+import { $ } from './bling';
 
-function ajaxChallenge() {
-  axios.get('/challenges')
+function ajaxChallenge(e) {
+  e.preventDefault();
+  axios.get(this.action)
     .then((res) => {
-      console.log(res);
+      $('.home-title').textContent = res.data[0].name;
+      $('.description').textContent = res.data[0].description;
     })
     .catch(console.error);
 }

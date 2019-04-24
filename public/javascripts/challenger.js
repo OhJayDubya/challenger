@@ -1,4 +1,5 @@
+import { $, $$ } from './modules/bling';
 import ajaxChallenge from './modules/challenge';
 
-
-ajaxChallenge();
+const getChallenge = $$('form.get-challenge');
+getChallenge.on('submit', ajaxChallenge);
