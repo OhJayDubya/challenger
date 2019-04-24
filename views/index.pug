@@ -4,7 +4,12 @@ block content
     if user
         .mdl-layout__content
             .home.mdl-typography--text-center
-                .home-title DASHBOARD!
+                .home-title
+                p.description
+                form.get-challenge(method="GET" action='/challenges')
+                    button(type='submit' name='challenge') GET!
+                form.post-challenge(method="GET" action='/challenges')
+                    button(type='submit' name='challenge') POST!
 
     else
         .mdl-layout__content
