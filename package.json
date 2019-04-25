@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prod": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "dev": "nodemon ./bin/www --ignore public",
     "start": "concurrently \"npm run dev\" \"npm run scripts\" \"npm run styles\"",
     "scripts": "parcel ./public/javascripts/challenger.js -d public/dist",
     "styles": "parcel ./public/stylesheets/style.css -d public/dist",
