@@ -4,14 +4,14 @@ const mongoErrors = require('mongoose-mongodb-errors');
 const passportLocal = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
-  challenges: [{
-    challenge: {
+  challenge: {
+    details: {
       type: mongoose.Schema.ObjectId,
       ref: 'Challenge',
-      status: String,
-      time: Date,
     },
-  }],
+    status: String,
+    time: Date,
+  },
   email: {
     type: String,
     unique: true,
@@ -20,6 +20,16 @@ const userSchema = new mongoose.Schema({
     validate: [validator.isEmail, 'Invalid E-Mail Address'],
     required: 'Please supply an E-Mail Address',
   },
+  history: [{
+    challenge: {
+      details: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Challenge',
+      },
+      status: String,
+      time: Date,
+    },
+  }],
   resetPasswordExpires: Date,
   resetPasswordToken: String,
   name: {
@@ -29,7 +39,14 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+function autoPopulate(next) {
+  this.populate('challenge.details');
+  next();
+}
+
 userSchema.plugin(passportLocal, { usernameField: 'email' });
 userSchema.plugin(mongoErrors);
+userSchema.pre('find', autoPopulate);
+userSchema.pre('findOne', autoPopulate);
 
 module.exports = mongoose.model('User', userSchema);

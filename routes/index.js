@@ -4,11 +4,10 @@ const router = express.Router();
 
 const userController = require('../controllers/user.controller');
 const authController = require('../controllers/auth.controller');
+const challengeController = require('../controllers/challenge.controller');
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Challenger' });
-});
+router.get('/', challengeController.getChallenge);
 
 router.get('/login', userController.loginForm);
 

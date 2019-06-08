@@ -4,12 +4,15 @@ block content
     if user
         .mdl-layout__content
             .home.mdl-typography--text-center
-                .home-title
-                p.description
+                #data
+                .home-title= user.challenge.details.name
+                p.description= user.challenge.details.description
+
+                p= user.challenge
                 form.get-challenge(method="GET" action='/challenges')
-                    button(type='submit' name='challenge') GET!
-                form.post-challenge(method="GET" action='/challenges')
-                    button(type='submit' name='challenge') POST!
+                    button(type='submit') GET!
+                form.post-challenge()
+                    button(type='submit') POST!
 
     else
         .mdl-layout__content

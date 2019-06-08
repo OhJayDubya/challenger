@@ -4,6 +4,6 @@ const router = express.Router();
 const challengeController = require('../controllers/challenge.controller');
 
 /* GET challenges listing */
-router.get('/', challengeController.getChallenge);
+router.get('/', challengeController.getChallengeAjax);
 
 module.exports = router;
