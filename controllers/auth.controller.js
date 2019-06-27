@@ -11,7 +11,7 @@ const mail = require('../util/mail');
 exports.login = passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: 'Failed Login',
-  successRedirect: '/',
+  successRedirect: '/dashboard',
   successFlash: 'You are now logged in',
 });
 
@@ -28,6 +28,14 @@ exports.authCheck = (req, res, next) => {
   }
   req.flash('error', 'Please login to your account');
   res.redirect('/login');
+};
+
+exports.loggedIn = (req, res) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/dashboard');
+  }
+
+  return res.render('index');
 };
 
 exports.forgotPassword = async (req, res) => {
