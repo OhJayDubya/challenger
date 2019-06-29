@@ -4,22 +4,32 @@ const Challenge = mongoose.model('Challenge');
 
 const User = mongoose.model('User');
 
+/**
+ * Function used for updating the current
+ * challenge against the user model
+ *
+ * @param {*} id
+ * @param {*} challenge
+ * @param {*} status
+ */
+const updateUser = (id, challenge, status) => User.findOneAndUpdate(
+  { _id: id },
+  {
+    $set: {
+      challenge: {
+        details: challenge[0],
+        status,
+      },
+    },
+  },
+  { new: true, runValidators: true, context: 'query' },
+);
+
 exports.getChallengeAjax = async (req, res) => {
   const challenge = await Challenge.aggregate([{ $sample: { size: 1 } }]);
 
   // Updates user model with the newly generated challenge
-  await User.findOneAndUpdate(
-    { _id: req.user.id },
-    {
-      $set: {
-        challenge: {
-          details: challenge[0],
-          status: 'PENDING',
-        },
-      },
-    },
-    { new: true, runValidators: true, context: 'query' },
-  );
+  await updateUser(req.user.id, challenge, 'PENDING');
 
   // Sends through the challenge to update the UI with
   res.send(challenge);
@@ -31,19 +41,10 @@ exports.getChallenge = async (req, res) => {
   } else {
     const challenge = await Challenge.aggregate([{ $sample: { size: 1 } }]);
 
-    const user = await User.findOneAndUpdate(
-      { _id: req.user.id },
-      {
-        $set: {
-          challenge: {
-            details: challenge[0],
-            status: 'PENDING',
-          },
-        },
-      },
-      { new: true, runValidators: true, context: 'query' },
-    );
+    // Updates user model with the newly generated challenge
+    const user = await updateUser(req.user.id, challenge, 'PENDING');
 
+    // Sends through updated user into the dashboard and renders page
     res.render('dashboard', { user });
   }
 };
