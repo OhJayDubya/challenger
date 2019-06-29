@@ -7,7 +7,9 @@ const authController = require('../controllers/auth.controller');
 const challengeController = require('../controllers/challenge.controller');
 
 /* GET home page. */
-router.get('/', challengeController.getChallenge);
+router.get('/', authController.loggedIn);
+
+router.get('/dashboard', authController.authCheck, challengeController.getChallenge);
 
 router.get('/login', userController.loginForm);
 

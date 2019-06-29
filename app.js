@@ -12,7 +12,7 @@ const passport = require('passport');
 const globals = require('./util/globals');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user');
 const challengesRouter = require('./routes/challenges');
 const reviewsRouter = require('./routes/reviews');
 
@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 
 // Routes used in the application
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/challenges', challengesRouter);
 app.use('/reviews', reviewsRouter);
 

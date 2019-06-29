@@ -5,15 +5,19 @@ const Challenge = mongoose.model('Challenge');
 const User = mongoose.model('User');
 
 exports.getChallengeAjax = async (req, res) => {
-  const challenge = await Challenge
-    .aggregate([
-      { $sample: { size: 1 } },
-    ]);
+  const challenge = await Challenge.aggregate([{ $sample: { size: 1 } }]);
 
   // Updates user model with the newly generated challenge
   await User.findOneAndUpdate(
     { _id: req.user.id },
-    { $set: { challenge: { details: challenge[0], status: 'PENDING', time: Date() } } },
+    {
+      $set: {
+        challenge: {
+          details: challenge[0],
+          status: 'PENDING',
+        },
+      },
+    },
     { new: true, runValidators: true, context: 'query' },
   );
 
@@ -22,20 +26,24 @@ exports.getChallengeAjax = async (req, res) => {
 };
 
 exports.getChallenge = async (req, res) => {
-  if (req.user && req.user.challenge) {
-    res.render('index');
+  if (req.user && req.user.challenge.details) {
+    res.render('dashboard');
   } else {
-    const challenge = await Challenge
-      .aggregate([
-        { $sample: { size: 1 } },
-      ]);
+    const challenge = await Challenge.aggregate([{ $sample: { size: 1 } }]);
 
     const user = await User.findOneAndUpdate(
       { _id: req.user.id },
-      { $set: { challenge: { details: challenge[0], status: 'PENDING', time: Date() } } },
+      {
+        $set: {
+          challenge: {
+            details: challenge[0],
+            status: 'PENDING',
+          },
+        },
+      },
       { new: true, runValidators: true, context: 'query' },
     );
 
-    res.render('index', { user });
+    res.render('dashboard', { user });
   }
 };

@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
       ref: 'Challenge',
     },
     status: String,
-    time: Date,
+    startTime: Date,
+    endTime: Date,
   },
   email: {
     type: String,
