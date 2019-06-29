@@ -47,7 +47,9 @@ function autoPopulate(next) {
 
 userSchema.plugin(passportLocal, { usernameField: 'email' });
 userSchema.plugin(mongoErrors);
+
 userSchema.pre('find', autoPopulate);
 userSchema.pre('findOne', autoPopulate);
+userSchema.pre('findOneAndUpdate', autoPopulate);
 
 module.exports = mongoose.model('User', userSchema);
