@@ -3,7 +3,7 @@ Challenger is a simple web application written primarily in node, express, pug a
 
 **DEVELOPMENT STATUS: ON HOLD**
 
-I am currently looking to refactor the application this application in the future or potentially rebuild it. I feel during my initial development phase I attempted to incorporate to many elements around the actual challenger functionality and ended up making the development of the project as well as some of the code-base complicated.
+I am currently looking to refactor this application in the future or potentially rebuild it. I feel during my initial development phase I attempted to incorporate to many elements around the actual challenger functionality and ended up making the development of the project as well as some of the code-base complicated.
 
 In the future I would like to make at least these changes to have the application in a working state:
 - Replace MongoDB with DynamoDB
