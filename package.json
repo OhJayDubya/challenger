@@ -3,21 +3,44 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "prod": "node ./bin/www",
+    "dev": "nodemon ./bin/www --ignore public",
+    "start": "concurrently \"npm run dev\" \"npm run scripts\" \"npm run styles\"",
+    "scripts": "parcel ./public/javascripts/challenger.js -d public/dist",
+    "styles": "parcel ./public/stylesheets/style.css -d public/dist",
+    "seed": "node ./data/data.controller.js",
+    "purge": "node ./data/data.controller.js --delete"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^7.0.0",
     "express": "~4.16.0",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "html-to-text": "^5.1.1",
     "http-errors": "~1.6.2",
+    "juice": "^5.2.0",
+    "mongoose": "^5.4.19",
+    "mongoose-mongodb-errors": "0.0.2",
     "morgan": "~1.9.0",
-    "pug": "^2.0.3"
+    "nodemailer": "^6.1.0",
+    "partials": "^0.1.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "pug": "^2.0.3",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "parcel": "^1.12.3"
   }
 }

@@ -1,0 +1,44 @@
+.flash {
+  background-color: #323232;
+  display: flex;
+  padding: 2rem;
+}
+
+.flash__text {
+  flex: 1;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.flash__action {
+  background: 0 0;
+  border: none;
+  float: right;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.flash--success {
+  color: rgb(76, 175, 80);
+}
+
+.flash--error {
+  color: rgb(244, 67, 54);
+}
+
+.flash--info {
+  color: rgb(255, 235, 59);
+}

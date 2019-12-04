@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	.mdl-layout__content
+		.home.mdl-typography--text-center
+			.home-title= user.challenge.details.name
+			p.description= user.challenge.details.description
+			
+			p= user.challenge
+			form.get-challenge(method="GET" action='/challenges')
+				button(type='submit') GET!
+			form.post-challenge()
+				button(type='submit') POST!

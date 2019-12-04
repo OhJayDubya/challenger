@@ -1,0 +1,37 @@
+extends email-layout
+
+block content
+  //E-Mails main content
+  div(style='background-color:#323232;')
+    .block-grid(style='Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #FFFFFF;;')
+      div(style='border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;')
+        .col.num12(style='min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top;;')
+          div(style='width:100% !important;')
+            div(style='border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:15px; padding-right: 0px; padding-left: 0px;')
+              div(style="color:#283C4B;font-family: 'Roboto','Helvetica','Arial',sans-serif;Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:150%;padding-top:10px;padding-right:30px;padding-bottom:10px;padding-left:30px;")
+                p(style="font-size: 12px; line-height: 36px; color: #283C4B; font-family: 'Roboto','Helvetica','Arial',sans-serif; Arial, 'Helvetica Neue', Helvetica, sans-serif; margin: 0;")
+                  span(style='font-size: 24px;') Password Reset Request
+
+              div(style="color:#283C4B;font-family: 'Roboto','Helvetica','Arial',sans-serif;Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:150%;padding-top:10px;padding-right:30px;padding-bottom:0px;padding-left:30px;")
+                div(style="font-size: 12px; line-height: 18px; color: #283C4B; font-family: 'Roboto','Helvetica','Arial',sans-serif; Arial, 'Helvetica Neue', Helvetica, sans-serif;")
+                  p(style='font-size: 12px; line-height: 21px; text-align: left; margin: 0;')
+                    span(style='font-size: 14px;')
+                      | Hello, it seems that you have requested a password reset for your challenger account. Please click the button below or follow the link provided to continue on with resetting your password. Be advised that this link will expire and is only valid for the next hour.
+              .button-container(align='center' style='padding-top:25px;padding-right:0px;padding-bottom:0px;padding-left:0px;' )
+                div(style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#ff5722;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;width:auto; width:auto;;border-top:1px solid #ff5722;border-right:1px solid #ff5722;border-bottom:1px solid #ff5722;border-left:1px solid #ff5722;padding-top:10px;padding-bottom:10px;font-family: 'Roboto','Helvetica','Arial',sans-serif;Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;")
+                  span(style='padding-left:20px;padding-right:20px;font-size:14px;display:inline-block;')
+                    span(style='font-size: 16px; line-height: 32px;')
+                      span(style="font-family: 'Roboto','Helvetica','Arial',sans-serif; 'lucida sans unicode', 'lucida grande', sans-serif; font-size: 14px; line-height: 32px;")
+                        a(href=`${resetURL}` rel='noopener' style='text-decoration: none; color: white;' target='_blank' title='Reset Link') CHANGE YOUR PASSWORD 
+
+              div(style="color:#555555;font-family: 'Roboto','Helvetica','Arial',sans-serif;Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:120%;padding-top:20px;padding-right:20px;padding-bottom:30px;padding-left:20px;")
+                div(style="font-size: 12px; line-height: 14px; color: #555555; font-family: 'Roboto','Helvetica','Arial',sans-serif; Arial, 'Helvetica Neue', Helvetica, sans-serif;")
+                  p(style='font-size: 14px; line-height: 16px; text-align: center; margin: 0;')
+                    span(style='font-size: 14px; line-height: 16px;')
+                      | If you can't click the above button please visit: #{resetURL}
+                        
+              div(style="color:#555555;font-family: 'Roboto','Helvetica','Arial',sans-serif;Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:120%;padding-top:20px;padding-right:20px;padding-bottom:30px;padding-left:20px;")
+                div(style="font-size: 12px; line-height: 14px; color: #555555; font-family: 'Roboto','Helvetica','Arial',sans-serif; Arial, 'Helvetica Neue', Helvetica, sans-serif;")
+                  p(style='font-size: 14px; line-height: 16px; text-align: center; margin: 0;')
+                    span(style='font-size: 14px; line-height: 16px;')
+                      | If you didn't request this email, please ignore it.
